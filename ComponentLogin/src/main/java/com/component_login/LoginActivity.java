@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity {
 
-    private static final String EXTRA_TARGET_CLASS = "EXTRA_TARGET_CLASS";
+    public static final String EXTRA_TARGET_CLASS = "EXTRA_TARGET_CLASS";
     private EditText et_username;
     private EditText et_password;
     private Button btn_login;
@@ -32,17 +32,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_password = (EditText) findViewById(R.id.et_password);
         btn_login = (Button) findViewById(R.id.btn_login);
 
-        btn_login.setOnClickListener(this);
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_login:
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 submit();
-                break;
-        }
+            }
+        });
     }
 
     private void submit() {
